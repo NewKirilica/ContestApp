@@ -1,0 +1,29 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ContestApp.UI.ViewModels"
+             x:Class="ContestApp.UI.Pages.NominationsPage"
+             x:DataType="viewmodels:NominationsViewModel"
+             Title="Номинации">
+
+    <ContentPage.BindingContext>
+        <viewmodels:NominationsViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Text="Список номинаций" FontSize="20" FontAttributes="Bold" />
+            <CollectionView ItemsSource="{Binding Nominations}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="domain:Nomination">
+                        <Frame BorderColor="Gray" CornerRadius="10" Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" FontSize="18" />
+                                <Label Text="{Binding Description}" FontSize="14" TextColor="Gray"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
